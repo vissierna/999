@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Прайс-лист</h1>
+<table border="1">
+  <tr>
+    <td>Номер</td>
+    <td>Вид мебели</td>
+    <td>Тип</td>
+    <td>Цена</td>
+    <td>Атрибут</td>
+    <td>Производитель</td>
+  </tr>
+  <script type="text/javascript">
+    // Ваши XML-данные
+    let xmlstr='<?xmlversion="1.0"encoding="UTF-8"?><?xml-stylesheettype="text/css"href="css/style.css"?><MAGAZIN><furniture><id>1</id><name>Шкаф</name><art>Дляодежды</art><buy>54 000руб.</buy><atribut>Зеркалонапереднейдверце</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>2</id><name>Шкаф</name><art>Кухонный</art><buy>38 000руб.</buy><atribut>Прозрачныйдверцы</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>3</id><name>Стол</name><art>Журнальный</art><buy>15 000руб.</buy><atribut>Стекляннаястолешница</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>4</id><name>Стол</name><art>Кухонный</art><buy>8 000руб.</buy><atribut>Дервянный</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>5</id><name>Кресло</name><art>Кожанное</art><buy>23 000</buy><atribut>Наножках</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>6</id><name>Стулья</name><art>Длякухни</art><buy>2 300руб./шт.</buy><atribut>Желеныесбархатнойсидушкой</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>7</id><name>Диван</name><art>Длягостинной</art><buy>42 000руб.</buy><atribut>Угловой</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>8</id><name>Диван</name><art>Длягостинной/кухни/спальни</art><buy>37 000руб.</buy><atribut>Раскладной</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>9</id><name>Каркасдлякровати</name><art>Дляспальни</art><buy>17 000руб.</buy><atribut>Деревянный</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>10</id><name>Каркасдлядвуспальнойкровати</name><art>Дляспальни</art><buy>21 000руб.</buy><atribut>Деревянный</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>11</id><name>Каркасдлякровати</name><art>Дляспальни</art><buy>11 000руб.</buy><atribut>Металлический</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>12</id><name>Каркасдлядвуспальнойкровати</name><art>Дляспальни</art><buy>15 000руб.</buy><atribut>Металлический</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>13</id><name>Рабочийстол</name><art>Длягостинной/спальни</art><buy>12 000руб.</buy><atribut>Дервянный</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>14</id><name>Тумба</name><art>Деревянная/металлическая</art><buy>8 000руб.</buy><atribut>Длягостинной/спальни</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>15</id><name>Кресло</name><art>Бархатное</art><buy>19 000руб.</buy><atribut>Длягостинной/спальни</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>16</id><name>Кресло</name><art>Кожанное</art><buy>16 000руб.</buy><atribut>Длягостинной/офиса</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>17</id><name>Столкухонный</name><art>Деревянный</art><buy>10 000</buy><atribut>Длякухни</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>18</id><name>Полки</name><art>Деревянные</art><buy>5 000руб.</buy><atribut>Гостинная/офис/спальня</atribut><creator>Россия</creator><material>Металл</material></furniture><furniture><id>19</id><name>Пуфик</name><art>Кожа/бархат</art><buy>11 000руб.</buy><atribut>Дляспальни/гостинной</atribut><creator>Россия</creator><material>Металл</material></furniture> <furniture><id>20</id><name>Софа</name><art>Текстиль</art><buy>12 000 руб.</buy><atribut>Для гостинной</atribut><creator>Россия</creator><material> Металл</material></furniture></MAGAZIN>
+    // Парсинг XML-данных
+    let parser = new DOMParser();
+    let xmlDoc = parser.parseFromString(xmlstr, "text/xml");
+
+    // Получение всех элементов <tovar>
+    let materials = xmlDoc.getElementsByTagName("furniture");
+      
+    // Итерация по каждому <tovar> и вывод данных в таблицу
+    for (let i = 0; i < materials.length; i++) {
+      let material = materials[i];
+      let Name = material.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+      
+      // Проверка на наличие элемента "obiom"
+      let obiom = material.getElementsByTagName("name")[0];
+      if (obiom) {
+        obiom = obiom.childNodes[0].nodeValue;
+      } else {
+        obiom = "0";
+      }
+
+      let price = material.getElementsByTagName("art")[0].childNodes[0].nodeValue;
+
+      // Вывод данных в таблицу
+      document.write("<tr>");
+      document.write("<td>", id, "</td>");
+      document.write("<td>", name, "</td>");
+      document.write("<td>", art, "</td>");
+      document.write("<td>", buy, "</td>");
+      document.write("<td>", atribut, "</td>");
+      document.write("<td>", creator, "</td>");
+      document.write("<td>", material, "</td>");
+      document.write("</tr>");
+    }
+  </script>
+</table>
+</body>
+</html>
+

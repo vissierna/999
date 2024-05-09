@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#gallery {
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.nazad-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nazad {
+  background-color: #934caf;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.nazad:hover {
+  background-color: #8345a0;
+}
+
+.nazad:active {
+  background-color: #8b3e8e;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Карточка товара</title>
+  <meta charset="UFT-8">
+  <link rel="stylesheet" type="text/css" href="product.css">
+</head>
+<body style="background-image: url(img2.jpg);">
+  <div>
+    <h1>Карточка товара</h1>
+    <div class="card">
+      <img id="main-image" src="image/4.jpg">
+      <div class="more-images">
+        <img src="image/8.jpg" onmouseover="changeImage('image/8.jpg')" onmouseout="resetImage()">
+        <img src="image/9.jpg" onmouseover="changeImage('image/9.jpg')" onmouseout="resetImage()">
+      </div>
+      <p>2</p>
+      <p>Стулья</p>
+      <p>Для кухни</p>
+      <p>2 300 руб./шт.</p>
+      <p>Железные с бархатной ручкой</p>
+      <p>Россия</p>
+      <div id="rating_bar">
+        <span id="rate_1">&#9734;</span>
+        <span id="rate_2">&#9734;</span>
+        <span id="rate_3">&#9734;</span>
+        <span id="rate_4">&#9734;</span>
+        <span id="rate_5">&#9734;</span>
+      </div>
+    </div>
+  </div>
+    <button onclick="goBack()" class="back-button">Назад</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function changeImage(imageUrl) {
+      document.getElementById('main-image').src = imageUrl;
+    }
+
+    function resetImage() {
+      document.getElementById('main-image').src = 'image/4.jpg';
+    }
+
+
+    let spans = document.getElementById("rating_bar").getElementsByTagName('span');
+
+for (let i = 0; i < spans.length; i++) {
+  spans[i].onmouseover = hoverStar;
+}
+
+function hoverStar() {
+  for (let i = 0; i < this.id.charAt(5); i++) {
+    spans[i].innerText = '⭐️';
+  }
+
+  for (let i = this.id.charAt(5); i < 5; i++) {
+    spans[i].innerText = '✰';
+  }
+}
+  </script>
+</body>
+</html>

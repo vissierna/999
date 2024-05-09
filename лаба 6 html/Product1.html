@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Карточка товара</title>
+  <link rel="stylesheet" type="text/css" href="product.css">
+  <meta charset="UFT-8">
+  
+  <style>
+    .btn {
+      display: block;
+width: 50%;
+font-weight: 200;
+font-size: 16px;
+color: #f3fcff;
+padding: 5px;
+text-align: center;
+border: 2px solid black;
+border-radius: 200px;
+cursor: pointer;
+-webkit-transition: 0.2s;
+-o-transition: 0.2s;
+transition: 0.2s;
+margin-top: auto;
+background-color: #ac47d4;
+    }
+   </style>
+
+<style>
+  .nazad {
+    display: block;
+width: 70%;
+font-weight: 400;
+font-size: 16px;
+color: #f3fcff;
+padding: 5px;
+text-align: center;
+border: 2px solid black;
+border-radius: 200px;
+cursor: pointer;
+-webkit-transition: 0.2s;
+-o-transition: 0.2s;
+transition: 0.2s;
+margin-top: auto;
+background-color: #4c1363;
+  }
+ </style>
+</head>
+<body style="background-image: url(img2.jpg);">
+  <div>
+    <h1>Карточка товара</h1>
+    <div class="card">
+      <img id="main-image" src="image/1.jpg">
+      <div class="more-images">
+        <img src="image/5.jpg" onmouseover="changeImage('image/5.jpg')" onmouseout="resetImage()">
+        <img src="image/7.jpg" onmouseover="changeImage('image/7.jpg')" onmouseout="resetImage()">
+      </div>
+      <p>ID - 1</p>
+      <p>Шкаф</p>
+      <p>Для одежды</p>
+      <p>54 000 руб.</p>
+      <p>Зеркало на передней дверце</p>
+      <p>Россия</p>
+      <a href="index3.html" class="btn">Оставить отзыв</a>
+      <div id="rating_bar">
+        <span id="rate_1">&#9734;</span>
+        <span id="rate_2">&#9734;</span>
+        <span id="rate_3">&#9734;</span>
+        <span id="rate_4">&#9734;</span>
+        <span id="rate_5">&#9734;</span>
+      </div>
+    </div>
+  </div>
+  
+    <button onclick="goBack()" class="back-button">Назад</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function changeImage(imageUrl) {
+      document.getElementById('main-image').src = imageUrl;
+    }
+
+    function resetImage() {
+      document.getElementById('main-image').src = 'image/1.jpg';
+    }
+
+
+    let spans = document.getElementById("rating_bar").getElementsByTagName('span');
+
+for (let i = 0; i < spans.length; i++) {
+  spans[i].onmouseover = hoverStar;
+}
+
+function hoverStar() {
+  for (let i = 0; i < this.id.charAt(5); i++) {
+    spans[i].innerText = '⭐️';
+  }
+
+  for (let i = this.id.charAt(5); i < 5; i++) {
+    spans[i].innerText = '✰';
+  }
+}
+  </script>
+</body>
+</html>
